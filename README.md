@@ -183,4 +183,5 @@ Copyright (c) 2026 **BIMAN SHIL**. All rights reserved.
 This project is published for viewing and as a portfolio example. No permission is granted to copy, modify, redistribute or use it, in whole or in part, without written permission from the author. See the [`LICENSE`](LICENSE) file.
 
 ---
-&copy; Made by **BIMAN SHIL**.
+
+<p align="center">© 2026 Password Strength Checker. Made by <b>BIMAN SHIL</b>.</p>
