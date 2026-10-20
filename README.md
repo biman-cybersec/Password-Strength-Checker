@@ -2,11 +2,31 @@
 
 A cyber security learning project by **BIMAN SHIL**. It rates a password out of 6 (**Low, Medium, Moderate, Strong**) and explains what to improve. It comes in three forms that share the same scoring rules:
 
-- a **command-line script** (`password_checker.py`)
-- a **website** (`index.html`) that also works as an installable, offline app
-- a small **Flask server** (`app.py`) that serves the website and a JSON API
+- a **command-line script** ([`password_checker.py`](password_checker.py))
+- a **website** ([`index.html`](index.html)) that also works as an installable, offline app
+- a small **Flask server** ([`app.py`](app.py)) that serves the website and a JSON API
 
 > **Experiment only.** This tool is for learning. It does not guarantee the security of any password. Please do not enter your real passwords.
+
+## Screenshots
+
+**A strong password** (6/6, every requirement met, crack time in billions of years)
+
+![Strong password result](screenshots/strong-password.png)
+
+**A pattern-based password** (`Summer2024` passes 4 of 6 rules, but is a word plus a year, so it is cracked almost instantly)
+
+![Pattern password result](screenshots/pattern-password.png)
+
+**Bulk check** of a `.txt` list, with a bar chart, table, CSV and PNG download
+
+![Bulk check chart and table](screenshots/bulk-check.png)
+
+**Command-line version** saves the same kind of chart as `strength_chart.png`
+
+![Python bar chart](screenshots/python-chart.png)
+
+*The screenshots use sample passwords only.*
 
 ## Features
 
@@ -96,25 +116,25 @@ Errors: `400` if a value is not text, `413` if more than 100,000 passwords are s
 pip install pytest flask
 pytest
 ```
-- `test_password_checker.py`: scoring rules, sequences, repeats, labels, file reading
-- `test_checker_extra.py`: common list, leetspeak, CSV report safety
-- `test_app.py`: every API route, error cases, and that private files return 404
+- [`test_password_checker.py`](test_password_checker.py): scoring rules, sequences, repeats, labels, file reading
+- [`test_checker_extra.py`](test_checker_extra.py): common list, leetspeak, CSV report safety
+- [`test_app.py`](test_app.py): every API route, error cases, and that private files return 404
 
 ## Project structure
 
 | File | Purpose |
 |---|---|
-| `password_checker.py` | Scoring logic and command-line tool |
-| `app.py` | Flask server and API |
-| `passwords.txt` | Sample passwords |
-| `common_passwords.txt` | Common-password list used by Python |
-| `build_common_js.py` | Builds `common-passwords.js` from the list |
-| `make_wordlist.py` | Builds `wordlist.js` for the passphrase generator |
-| `index.html`, `style.css`, `script.js` | The website |
-| `common-passwords.js`, `wordlist.js` | Word lists for the website |
-| `extras.js` | PDF report and service-worker registration |
-| `sw.js`, `manifest.webmanifest`, `icon-*.png` | Installable offline app |
-| `test_*.py` | Tests |
+| [`password_checker.py`](password_checker.py) | Scoring logic and command-line tool |
+| [`app.py`](app.py) | Flask server and API |
+| [`passwords.txt`](passwords.txt) | Sample passwords |
+| [`common_passwords.txt`](common_passwords.txt) | Common-password list used by Python |
+| [`build_common_js.py`](build_common_js.py) | Builds `common-passwords.js` from the list |
+| [`make_wordlist.py`](make_wordlist.py) | Builds `wordlist.js` for the passphrase generator |
+| [`index.html`](index.html), [`style.css`](style.css), [`script.js`](script.js) | The website |
+| [`common-passwords.js`](common-passwords.js), [`wordlist.js`](wordlist.js) | Word lists for the website |
+| [`extras.js`](extras.js) | PDF report and service-worker registration |
+| [`sw.js`](sw.js), [`manifest.webmanifest`](manifest.webmanifest), [`icon-192.png`](icon-192.png), [`icon-512.png`](icon-512.png) | Installable offline app |
+| [`test_password_checker.py`](test_password_checker.py), [`test_checker_extra.py`](test_checker_extra.py), [`test_app.py`](test_app.py) | Tests |
 
 ## Limitations
 
@@ -124,11 +144,43 @@ pytest
 - The leak check needs an internet connection and sends a partial hash to a third party (Have I Been Pwned).
 - This is a learning project. Use a password manager for real accounts.
 
+## Outcome
+
+The project works as a command-line tool, a website and an installable offline app, and its 81 automated tests pass.
+
+**Results on sample passwords** (website; crack times are estimates at 10 billion guesses per second)
+
+| Password | Score | Strength | Estimated time to crack |
+|---|---|---|---|
+| `password` | 0/6 | Low | less than a millisecond (common password) |
+| `abcd1234` | 2/6 | Medium | less than a millisecond |
+| `Summer2024` | 4/6 | Moderate | less than a millisecond |
+| `Qwerty123!` | 4/6 | Moderate | less than a millisecond |
+| `Tr0ub4dor&3` | 5/6 | Strong | about 9,000 years |
+| `Xk9$mP2#vL7@qR4!` | 6/6 | Strong | billions of years |
+| `correct-Horse-battery-staple-9!` | 6/6 | Strong | billions of years |
+
+On a 20-password sample list, 8 were Low, 1 Medium, 3 Moderate and 8 Strong (see the bulk-check screenshot above).
+
+**What the project showed**
+- A rule-based score is not the same as real strength. `Summer2024` has a capital letter, a number and 10 characters, but it is a common word plus a year, so an attacker finds it at once. That is why the crack-time estimate looks at patterns as well as length.
+- Length and randomness matter more than adding one symbol. Long random passwords and long passphrases are the only ones that hold up.
+- Common passwords, keyboard walks and look-alike swaps (`p@ssw0rd`) are the first things an attacker tries, so they are scored as weak straight away.
+- Checking against known breaches can be done privately: only the first 5 characters of a SHA-1 hash are sent, never the password.
+
+**What I built and learned**
+- The same scoring rules in two languages (Python and JavaScript), kept in sync and covered by tests.
+- A small Flask API with input checks, a file whitelist (so source and data files are never served), and tests for the error cases.
+- A browser app with accessibility support, light and dark themes, and offline use through a service worker.
+- Safe handling of untrusted input: spreadsheet-formula protection in CSV files, `textContent` instead of `innerHTML`, and no password in the PDF report.
+
+**Ideas for later:** add the avoid-words, presets and leak check to the Python tool, use a larger real breach-based word list, and model passphrases more accurately in the crack-time estimate.
+
 ## License
 
 Copyright (c) 2026 **BIMAN SHIL**. All rights reserved.
 
-This project is published for viewing and as a portfolio example. No permission is granted to copy, modify, redistribute or use it, in whole or in part, without written permission from the author. See the `LICENSE` file.
+This project is published for viewing and as a portfolio example. No permission is granted to copy, modify, redistribute or use it, in whole or in part, without written permission from the author. See the [`LICENSE`](LICENSE) file.
 
 ---
 &copy; Made by **BIMAN SHIL**.
