@@ -8,6 +8,8 @@ A cyber security learning project by **BIMAN SHIL**. It rates a password out of 
 
 > **Experiment only.** This tool is for learning. It does not guarantee the security of any password. Please do not enter your real passwords.
 
+**Live demo:** [password-strength-checker-biman.netlify.app](https://password-strength-checker-biman.netlify.app/)
+
 ## Screenshots
 
 **A strong password** (6/6, every requirement met, crack time in billions of years)
@@ -80,6 +82,8 @@ The website estimates how many guesses an attacker would need. It finds the chea
 
 ## Run it
 
+**Try it online:** https://password-strength-checker-biman.netlify.app/ (no install needed; bulk checks run in your browser there).
+
 You need Python 3.9 or newer.
 
 **1. Command line**
@@ -138,6 +142,7 @@ pytest
 
 ## Limitations
 
+- The hosted demo is a static site on Netlify, so it has no Flask server. Bulk checks run in the browser instead. To use the Python API, run `app.py` locally.
 - The common-password list was written for this project; it is **not** a real leaked dataset. For real use, replace `common_passwords.txt` with a list such as SecLists' top 10,000 and run `python build_common_js.py`.
 - The crack-time is an estimate with a simple attacker model, not a guarantee. Passphrases are still over-estimated, because their separator and number are counted as random characters.
 - The "avoid words", presets, leak check, entropy and attack simulator exist only in the website. The Python script uses the basic 6-point rules.
