@@ -1,0 +1,6 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+password_report.csv
+strength_chart.png
+PROJECT_HANDOFF.md
