@@ -140,15 +140,6 @@ pytest
 | [`sw.js`](sw.js), [`manifest.webmanifest`](manifest.webmanifest), [`icon-192.png`](icon-192.png), [`icon-512.png`](icon-512.png) | Installable offline app |
 | [`test_password_checker.py`](test_password_checker.py), [`test_checker_extra.py`](test_checker_extra.py), [`test_app.py`](test_app.py) | Tests |
 
-## Limitations
-
-- The hosted demo is a static site on Netlify, so it has no Flask server. Bulk checks run in the browser instead. To use the Python API, run `app.py` locally.
-- The common-password list was written for this project; it is **not** a real leaked dataset. For real use, replace `common_passwords.txt` with a list such as SecLists' top 10,000 and run `python build_common_js.py`.
-- The crack-time is an estimate with a simple attacker model, not a guarantee. Passphrases are still over-estimated, because their separator and number are counted as random characters.
-- The "avoid words", presets, leak check, entropy and attack simulator exist only in the website. The Python script uses the basic 6-point rules.
-- The leak check needs an internet connection and sends a partial hash to a third party (Have I Been Pwned).
-- This is a learning project. Use a password manager for real accounts.
-
 ## Outcome
 
 The project works as a command-line tool, a website and an installable offline app, and its 81 automated tests pass.
