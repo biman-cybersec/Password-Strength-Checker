@@ -19,3 +19,6 @@ print(len(words), "words")
 open("wordlist.js", "w", encoding="utf-8").write(
     "// Word list for the passphrase generator. Rebuild with: python make_wordlist.py\n"
     "window.WORDLIST = " + repr(words).replace("'", '"') + ";\n")
+
+
+# Made by BIMAN SHIL.
