@@ -862,3 +862,7 @@ function updateViewer() {
   viewerNote.textContent = "Red parts are easy to guess: sequences, repeats, common or personal words.";
   viewer.hidden = false;
 }
+
+
+
+/* ---------- Made by BIMAN SHIL. ---------- */
