@@ -24,3 +24,7 @@ self.addEventListener("fetch", e => {
     }).catch(() => caches.match(e.request, { ignoreSearch: true }).then(r => r || caches.match("./")))
   );
 });
+
+
+/* Created by BIMAN SHIL. */
+/* Coded by BIMAN SHIL. */
