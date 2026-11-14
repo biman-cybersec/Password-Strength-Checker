@@ -163,3 +163,8 @@ window.WORDLIST = ["able", "acorn", "active", "actor",
     "wild", "willow", "window", "wink", "winter", "wire", "wise", "witty", "wizard", 
     "wolf", "wombat", "wonder", "wren", "wrench", "yak", "yarn", "yodel", "yogurt", "yukon", 
     "zebra", "zenith", "zephyr", "zesty", "zucchini", "zurich"];
+
+
+
+// Created by BIMAN SHIL.
+// Coded by BIMAN SHIL.
