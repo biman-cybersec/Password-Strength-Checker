@@ -94,3 +94,6 @@ document.getElementById("pdfBtn").addEventListener("click", () => {
   URL.revokeObjectURL(a.href);
   note.textContent = "Report downloaded (no password inside).";
 });
+
+
+/* ===== Made by BIMAN SHIL ===== */
