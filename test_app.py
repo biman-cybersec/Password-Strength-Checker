@@ -136,3 +136,7 @@ def test_private_or_unknown_files_return_404(client, path):
 
 def test_web_file_whitelist_never_lists_python_or_data_files():
     assert not any(n.endswith((".py", ".txt")) for n in WEB_FILES)
+
+
+# ---------- Coded by BIMAN SHIL. ----------
+# ---------- Designed by BIMAN SHIL. ----------
