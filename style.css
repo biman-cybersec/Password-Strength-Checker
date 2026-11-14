@@ -607,3 +607,9 @@ kbd { padding: 1px 6px; font: inherit; font-size: .78em; border: 1px solid var(-
 .copy-note:empty { display: none; }
 .leak-result.bad { padding: 10px 12px; font-weight: 600; border: 1px solid var(--low); border-radius: 10px; background: color-mix(in srgb, var(--low) 12%, transparent); }
 :root[data-theme="light"] .leak-result.bad { color: #b91c1c; }
+
+
+
+
+/* ---------- Designed by BIMAN SHIL. ---------- */
+/* ---------- Coded by BIMAN SHIL ---------- */
