@@ -206,3 +206,7 @@ def save_chart(results: list, path="strength_chart.png"):
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
+
+
+
+# Made by BIMAN SHIL.
