@@ -63,3 +63,7 @@ def test_check_file_skips_blank_lines(tmp_path):
     assert [r["password"] for r in results] == ["password", "Xk9$mP2#vL7@qR4!"]
     assert [r["label"] for r in results] == ["Low", "Strong"]
 
+
+
+# Coded by BIMAN SHIL.
+# Designed by BIMAN SHIL.
