@@ -10,3 +10,5 @@ words = sorted({w.strip().lower() for w in (here / "common_passwords.txt").read_
     encoding="utf-8",
 )
 print(f"Wrote common-passwords.js with {len(words)} passwords")
+
+"""Mabe by BIMAN SHIL."""
