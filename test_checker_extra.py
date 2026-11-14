@@ -49,3 +49,7 @@ def test_csv_report_contents(tmp_path):
     assert data[0] == ["Password", "Score", "Strength"]
     assert data[1] == ["'=evil()", "0", "Low"]
     assert data[2] == ['a,"b"', "3", "Medium"]
+
+
+# Created by BIMAN SHIL.
+# Coded by BIMAN SHIL.
